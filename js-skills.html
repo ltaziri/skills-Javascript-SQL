@@ -453,50 +453,49 @@ $('#play-guessing-game').click(guessingGame);
   </form>
 </fieldset>
 
-<script>
+// <script>
 
-function startGame() {
-  $("#number-guessed").removeAttr('disabled');
-  $("#try-this-number").removeAttr('disabled');
-  $("#playing-guessing-game-2").attr('disabled', 'disabled');
+// function startGame() {
+//   $("#number-guessed").removeAttr('disabled');
+//   $("#try-this-number").removeAttr('disabled');
+//   $("#playing-guessing-game-2").attr('disabled', 'disabled');
 
-  var randomNumberTwo = Math.floor((Math.random() * 100) + 1);
-  console.log(randomNumberTwo); 
-  }
+//   var randomNumberTwo = Math.floor((Math.random() * 100) + 1);
+//   console.log(randomNumberTwo); 
+//   }
 
-$('#play-guessing-game-2').click(startGame);
+// $('#play-guessing-game-2').click(startGame);
 
 
-function playGame(event) {
+// function playGame(event) {
 
-  event.preventDefault();
+//   event.preventDefault();
  
-  console.log(randomNumberTwo); 
+//   console.log(randomNumberTwo); 
   
-  var playing = true;
+//   var playing = true;
  
-  while (playing) {
+//   while (playing) {
 
-      var guess = $("#number-guessed").val();
+//       var guess = $("#number-guessed").val();
 
-      console.log(guess);
+//       console.log(guess);
 
-      if (guess === randomNumberTwo) { 
-      $("#number-guessing-msg").html("Congratulations! You guessed correct!");
-       playing = false;
-    } else if (guess > randomNumberTwo) {
-      $("#number-guessing-msg").html("Too high! Try again!");
-    } else if (guess < randomNumberTwo) {
-      $("#number-guessing-msg").html("Too high! Try again!");
-    }
-  }
+//       if (guess === randomNumberTwo) { 
+//       $("#number-guessing-msg").html("Congratulations! You guessed correct!");
+//        playing = false;
+//     } else if (guess > randomNumberTwo) {
+//       $("#number-guessing-msg").html("Too high! Try again!");
+//     } else if (guess < randomNumberTwo) {
+//       $("#number-guessing-msg").html("Too high! Try again!");
+//     }
+//   }
   
-}
-$("#guessing-game-2-form").submit(playGame);
+// }
+// $("#guessing-game-2-form").submit(playGame);
 
-// $("#guessing-game-2-form").submit(function () {return playGame('randomNumberTwo');});
 
-</script>
+// </script>
 
 
 
@@ -530,11 +529,38 @@ $("#guessing-game-2-form").submit(playGame);
 </fieldset>
 
 <script>
-    var PRIME_COLORS = ['orange', 'midnightblue', 'darkgoldenrod', 'green', 'purple'];
+  var PRIME_COLORS = ['orange', 'midnightblue', 'darkgoldenrod', 'green', 'purple'];
 
-  // put the rest of your code here
+  function primeCheck() {
+    var primeNumbers = [];
+    for (var testNum = 2; testNum < 12; testNum++) {
+      var prime = true;
+      console.log(testNum);
+      for (i = 2; i <= testNum; i++) {
+        console.log(i);
+        if (testNum % i === 0 && testNum !== i) {
+          prime = false;
+        }
+      }
+      if (prime === true) {
+        primeNumbers.push(testNum);
+        console.log(primeNumbers);
+      }
+    }
+
+
+    for (i = 0; i < primeNumbers.length; i++) {
+      $("#prime-box-area").append("<div style = 'background-color:" + PRIME_COLORS[i] +"'" + ">" + primeNumbers[i] + "</div>");
+      $("#prime-box-area div").attr("class", "prime-box");  
+    }
+
+
+  }   
+  
+     
+  
+  $("#make-prime-boxes").click(primeCheck);
 </script>
-
 
 
 
